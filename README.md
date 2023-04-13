@@ -4,7 +4,7 @@
 - **Θ (Big Theta)**: approximate complexity (f(n) = Θ(g(n))).
 - **Ω (Big Omega)**: strict notation of the lower bound; the algorithm will not run faster than this value (f(n) >= Ω(g(n))).
 
-![big_o.png](https://raw.githubusercontent.com/kooznitsa/python_algorithms/main/__images/big_o.png)
+![big_o.png](https://raw.githubusercontent.com/kooznitsa/python_algorithms/main/images/big_o.png)
 
 **Big O run times, from fastest to slowest:**
 
@@ -19,7 +19,7 @@
 | O(2 ** n)        | Exponential        | Brute-force equivalence of 2 statements             |
 | O(n!)            | Factorial          | Traveling salesperson via brute-force search        |
 
-![array_sorting.png](https://raw.githubusercontent.com/kooznitsa/python_algorithms/main/__images/array_sorting.png)
+![array_sorting.png](https://raw.githubusercontent.com/kooznitsa/python_algorithms/main/images/array_sorting.png)
 
 **Examples of specific times:**
 
