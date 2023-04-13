@@ -1,3 +1,17 @@
+"""GREEDY ALGORITHM. HUFFMAN CODE
+-----
+1. Create a leaf node for each symbol and add it to the priority queue.
+2. While there is more than one node in the queue:
+    1) Remove the two nodes of highest priority (lowest probability) from the queue
+    2) Create a new internal node with these two nodes as children and with 
+    probability equal to the sum of the two nodes' probabilities.
+    3) Add the new node to the queue.
+3. The remaining node is the root node and the tree is complete.
+-----
+Time complexity: O(n ** 2) with an array,
+O(n * log n) with a heap
+"""
+
 import heapq
 import random
 from string import ascii_letters

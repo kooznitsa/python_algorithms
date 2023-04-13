@@ -1,13 +1,14 @@
+"""FIBONACCI SEQUENCE"""
+
+from random import randint
+
+
 def fib(n: int) -> int:
     """Get N-th Fibonacci number."""
     f0, f1 = 0, 1
     for _ in range(n - 1):
         f0, f1 = f1, f0 + f1
     return f1
-
-def main() -> None:
-    n = int(input())
-    print(fib(n))
 
 
 def fib_digit(n: int) -> int:
@@ -16,10 +17,6 @@ def fib_digit(n: int) -> int:
     for i in range(2, n + 1):
         f.append((f[i - 1] + f[i - 2]) % 10)
     return f[-1]
-
-def main() -> None:
-    n = int(input())
-    print(fib_digit(n))
 
 
 def fib_mod(n: int, m: int) -> int:
@@ -39,10 +36,10 @@ def fib_mod(n: int, m: int) -> int:
     return f[-1]
 
 
-def main() -> None:
-    n, m = map(int, input().split())
-    print(fib_mod(n, m))
-
-
 if __name__ == '__main__':
-    main()
+    n = randint(1, 1000)
+    m = randint(1, 55)
+
+    print(fib(n))
+    print(fib_digit(n))
+    print(fib_mod(n, m))

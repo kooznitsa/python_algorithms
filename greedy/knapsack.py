@@ -1,3 +1,6 @@
+"""GREEDY ALGORITHM. KNAPSACK PROBLEM"""
+
+
 from collections import namedtuple
 import sys
 
@@ -21,11 +24,11 @@ def get_objects() -> tuple[int, list[tuple]]:
     return max_weight, objects
 
 
-def fill_backpack(max_weight: int, objects: list[tuple]) -> str:
+def fill_knapsack(max_weight: int, objects: list[tuple]) -> str:
     """Return the maximum cost of parts of items 
     (any part can be taken from each item, 
     the cost and weight will decrease proportionally) 
-    that fit into the given backpack.
+    that fit into the given knapsack.
     """
     cost, weight = 0, 0
 
@@ -42,6 +45,25 @@ def fill_backpack(max_weight: int, objects: list[tuple]) -> str:
     return f'{cost:.3f}'
 
 
+THINGS = {
+    'lighter': 20, 'compas': 100, 'fruits': 500, 'shirt': 300,
+    'thermos': 1000, 'medicine box': 200, 'jacket': 600, 'binocular': 400, 
+    'fishing rod': 1200, 'napkins': 40, 'sandwiches': 820, 'tent': 5500, 
+    'sleeping bag': 2250, 'bubblegum': 10,
+}
+
+def fill_knapsack_whole_things(weight: str, things: dict = THINGS) -> None:
+    """Print names of the whole items (division of items not allowed) 
+    that fit into the given knapsack.
+    """
+    weight = int(input()) * 1000
+
+    for key, value in sorted(things.items(), key=lambda x: x[1], reverse=True):
+        if value <= weight:
+            print(key)
+            weight -= value
+
+
 if __name__ == '__main__':
     max_weight, objects = get_objects()
-    print(fill_backpack(max_weight, objects))
+    print(fill_knapsack(max_weight, objects))
