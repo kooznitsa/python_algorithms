@@ -1,4 +1,6 @@
-# Big O notation
+# Algorithms
+
+## Big O Notation
 
 - **O (Big O)**: strict maximum complexity; the algorithm under no circumstances will run longer (f(n) <= O(g(n))).
 - **Θ (Big Theta)**: approximate complexity (f(n) = Θ(g(n))).
@@ -36,3 +38,22 @@ You take only the fastest-growing term and ignore constants and terms that grow 
 
 f + g = O(max(f, g))
 (n ** 2) + n = O(n ** 2), (2 ** n) + (n ** 9) = O(2 ** n)
+
+## Divide and Conquer (D&C) Algorithms
+
+1. Figure out a simple case as the base case. If you're using D&C on a list, the best case is probably an empty array or an array with one element.
+2. Figure out how to reduce your problem and get to the best case.
+
+**Examples:**
+
+- [Binary search](https://github.com/kooznitsa/python_algorithms/blob/main/searching/binary_search.py)
+- [Karatsuba algorithm](https://github.com/kooznitsa/python_algorithms/blob/main/other/karatsuba.py)
+- [Merge sort](https://github.com/kooznitsa/python_algorithms/blob/main/sorting/merge_sort.py)
+- [Quicksort](https://github.com/kooznitsa/python_algorithms/blob/main/sorting/quicksort.py)
+
+## Greedy Algorithms
+
+**Examples:**
+
+- [Huffman code](https://github.com/kooznitsa/python_algorithms/blob/main/greedy/huffman.py)
+- [Knapsack problem](https://github.com/kooznitsa/python_algorithms/blob/main/greedy/knapsack.py)
