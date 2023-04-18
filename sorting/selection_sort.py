@@ -28,7 +28,9 @@ def find_smallest(arr: list) -> int:
 
 @test_time_exec(iters=1)
 def selection_sort(arr: list) -> list:
-    """Sort list by selection."""
+    """Sort list by selection.
+    Works faster than selection_sort_1.
+    """
     new_arr = []
     for _ in range(1, len(arr) + 1):
         smallest = find_smallest(arr)
@@ -36,5 +38,20 @@ def selection_sort(arr: list) -> list:
     return new_arr
 
 
+@test_time_exec(iters=1)
+def selection_sort_1(arr):
+    for i in range(len(arr)):
+        k = i
+        for j in range(i + 1, len(arr)):
+            if arr[j] < arr[k]:
+                k = j
+        arr[i], arr[k] = arr[k], arr[i]
+
+
 if __name__ == '__main__':
-    print(selection_sort([randint(1, 100) for _ in range(10)]))
+    arr_0 = [randint(1, 100) for _ in range(1000)]
+    print(selection_sort(arr_0))
+
+    arr_1 = [randint(1, 100) for _ in range(1000)]
+    selection_sort_1(arr_1)
+    print(arr_1)
