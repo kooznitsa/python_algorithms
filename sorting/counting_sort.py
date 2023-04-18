@@ -13,7 +13,7 @@ Time complexity: O(n + M), where M is the maximum number
 """
 
 
-def counting_sort(arr):
+def counting_sort(arr: list) -> None:
     size = len(arr)
     maximum = max(arr) + 1
     output = [0] * size

@@ -16,7 +16,7 @@ import heapq
 from random import randint
 
 
-def heapsort(arr):
+def heapsort(arr: list) -> list:
     heapq.heapify(arr)
     result = []
     while arr:

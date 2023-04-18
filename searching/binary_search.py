@@ -10,12 +10,9 @@ Time complexity: O(log n)
 """
 
 import sys
-sys.path.append('./')
-
-from decorators.test_time_exec import test_time_exec
+from bisect import bisect_left
 
 
-@test_time_exec(iters=1)
 def binary_search(array: list[int], key: int) -> int:
     """Given two arrays: sorted numbers and keys,
     return index of each number, starting from 1.
@@ -32,11 +29,33 @@ def binary_search(array: list[int], key: int) -> int:
             right = mid - 1
         else:
             left = mid + 1
-        return -1
+    return -1
 
+
+def binary_search_with_bisect(array: list[int], key: int) -> int:
+    """Perform binary search using the bisect module.
+    i < low : array[i] < key
+    i > low : array[i] >= key
+    """
+    low = bisect_left(array, key)
+    if low < len(array) and array[low] == key:
+        return low + 1
+    return -1
+    
 
 if __name__ == '__main__':
-    array = map(int, input().split())
-    keys = map(int, input().split())
+    """Sample input:
+    5 1 5 8 12 13
+    5 8 1 23 1 11
+    Output: 3 1 -1 1 -1
+    """
+    reader = (map(int, line.split()) for line in sys.stdin)
+    n, *array = next(reader)
+    k, *keys = next(reader)
 
-    print(*[binary_search(array, k) for k in keys], sep=' ')
+    for key in keys:
+        print(binary_search(array, key), end=' ')
+    print()
+
+    for key in keys:
+        print(binary_search_with_bisect(array, key), end=' ')
