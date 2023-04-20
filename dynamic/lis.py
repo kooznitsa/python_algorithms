@@ -7,8 +7,7 @@ is 6 and LIS is [10, 22, 33, 50, 60, 80].
 -----
 1. Declare the list for LIS and initialize LIS values for all indexes.
 2. Compute optimized LIS values in bottom up manner.
-3. Initialize maximum to 0.
-4. Pick maximum of all LIS values.
+3. Pick maximum of all LIS values.
 -----
 Time complexity: O(n ** 2)
 """
@@ -22,10 +21,7 @@ def lis_bottom_up(arr):
         for j in range(i):
             if arr[j] < arr[i] and d[j] + 1 > d[i]:
                 d[i] = d[j] + 1
-    maximum = 0
-    for i in range(n):
-        maximum = max(maximum, d[i])
-    return maximum
+    return max(d)
 
 
 def lis_bottom_up_2(arr):
