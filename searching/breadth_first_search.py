@@ -1,5 +1,6 @@
-"""GRAPHS. BREADTH-FIRST SEARCH
+"""GRAPHS. BREADTH-FIRST SEARCH (BFS)
 -----
+BFS is used to calculate the shortest path in an unweighted graph (a graph without weights). 
 It answers questions:
 1. Is there a path from node A to node B?
 2. What is the shortest path from node A to node B?
