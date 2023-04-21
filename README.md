@@ -57,3 +57,18 @@ f + g = O(max(f, g))
 
 - [Huffman code](https://github.com/kooznitsa/python_algorithms/blob/main/greedy/huffman.py)
 - [Knapsack problem](https://github.com/kooznitsa/python_algorithms/blob/main/greedy/knapsack.py)
+
+## Dynamic Programming
+
+- Dynamic programming is useful when you’re trying to optimize something given a constraint.
+- Dynamic programming starts by solving subproblems and builds up to solving the big problem.
+- Dynamic programming only works when each subproblem is discrete — when it doesn’t depend on other subproblems.
+- Every dynamic-programming solution involves a grid (matrix).
+- Each cell is a subproblem. Think about how you can divide your problem into subproblems. That will help you figure out what the axes are.
+- The values in the cells are usually what you’re trying to optimize.
+
+**Examples:**
+
+- [Edit distance](https://github.com/kooznitsa/python_algorithms/blob/main/dynamic/edit_distance.py)
+- [Knapsack problem](https://github.com/kooznitsa/python_algorithms/blob/main/dynamic/knapsack.py)
+- [Largest Increasing Sequence (LIS)](https://github.com/kooznitsa/python_algorithms/blob/main/dynamic/lis.py)
