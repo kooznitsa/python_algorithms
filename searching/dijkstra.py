@@ -1,4 +1,4 @@
-"""GRAPHS. DIJKSTRA'S ALGORITHM
+"""GREEDY/GRAPHS. DIJKSTRA'S ALGORITHM
 -----
 - WEIGHT: a number associated with each edge in the graph.
 - WEIGHTED GRAPH: a graph with weights.
