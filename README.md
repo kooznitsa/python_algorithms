@@ -43,9 +43,11 @@ f + g = O(max(f, g))
 
 1. Figure out a simple case as the base case. If you're using D&C on a list, the best case is probably an empty array or an array with one element.
 2. Figure out how to reduce your problem and get to the best case.
+3. Merge solutions to subproblems into the solution of the original problem.
 
 **Examples:**
 
+- [Array inversions](https://github.com/kooznitsa/python_algorithms/blob/main/other/array_inversions.py)
 - [Binary search](https://github.com/kooznitsa/python_algorithms/blob/main/searching/binary_search.py)
 - [Galloping search](https://github.com/kooznitsa/python_algorithms/blob/main/searching/galloping_search.py)
 - [Jump search](https://github.com/kooznitsa/python_algorithms/blob/main/searching/jump_search.py)
