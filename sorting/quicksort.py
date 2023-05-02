@@ -14,7 +14,7 @@ O(n ** 2) worst case;
 O(log n) with tail recursion eliminated.
 """
 
-from random import randint
+from random import randint, choice
 
 
 def quicksort(arr: list) -> list:
@@ -30,6 +30,21 @@ def quicksort(arr: list) -> list:
         return quicksort(less) + [pivot] + quicksort(greater)
     
 
+def random_quicksort(arr: list) -> list:
+    """Base case: arrays with 0 or 1 element are already “sorted.”
+    Recursive case: random element as a pivot.
+    """
+    if len(arr) < 2:
+        return arr
+    else:
+        pivot = choice(arr)
+        arr.remove(pivot)
+        less = [i for i in arr if i <= pivot]
+        greater = [i for i in arr if i > pivot]
+        return quicksort(less) + [pivot] + quicksort(greater)
+    
+
 if __name__ == '__main__':
     arr = [randint(1, 999) for _ in range(10)]
     print(quicksort(arr))
+    print(random_quicksort(arr))
