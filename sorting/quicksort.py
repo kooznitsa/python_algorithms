@@ -41,7 +41,7 @@ def random_quicksort(arr: list) -> list:
         arr.remove(pivot)
         less = [i for i in arr if i <= pivot]
         greater = [i for i in arr if i > pivot]
-        return quicksort(less) + [pivot] + quicksort(greater)
+        return random_quicksort(less) + [pivot] + random_quicksort(greater)
     
 
 if __name__ == '__main__':
