@@ -21,6 +21,13 @@
 | O(2 \*\* n)   | Exponential        | Brute-force equivalence of 2 statements       |
 | O(n!)         | Factorial          | Traveling salesperson via brute-force search  |
 
+**Examples of operations:**
+- O(1): accessing a dictionary by key; push/pop from a stack.
+- O(log n): volume of data decreases with each iteration.
+- O(n): searching for an element in an array; finding a minimum element in an array.
+- O(n ** 2): 2 nested foor loops.
+- O(n ** 3): 3 nested foor loops.
+
 ![array_sorting.png](https://raw.githubusercontent.com/kooznitsa/python_algorithms/main/images/array_sorting.png)
 
 **Examples of specific times:**
@@ -37,7 +44,8 @@
 You take only the fastest-growing term and ignore constants and terms that grow more slowly:
 
 f + g = O(max(f, g))
-(n ** 2) + n = O(n ** 2), (2 ** n) + (n ** 9) = O(2 \*\* n)
+(n ** 2) + n = O(n ** 2)
+(2 ** n) + (n ** 9) = O(2 \*\* n)
 
 ## Divide and Conquer (D&C) Algorithms
 

@@ -62,5 +62,4 @@ def iterative_merge_sort(nums: list) -> list:
 
 if __name__ == '__main__':
     nums = [randint(1, 999) for _ in range(10)]
-    print(recursive_merge_sort(nums))
-    print(iterative_merge_sort(nums))
+    assert recursive_merge_sort(nums) == iterative_merge_sort(nums) == sorted(nums)

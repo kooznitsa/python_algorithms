@@ -1,12 +1,9 @@
 """INSERTION SORT
-(Sorting in place)
 -----
 1. Iterate from arr[1] to arr[N] over the array. 
 2. Compare the current element (key) to its predecessor. 
-3. If the key element is smaller than its predecessor, 
-compare it to the elements before. 
-Move the greater elements one position up to make space 
-for the swapped element.
+3. If the key element is smaller than its predecessor, compare it to the elements before. 
+Move the greater elements one position up to make space for the swapped element.
 -----
 Time complexity: Θ(n ** 2)
 """
@@ -29,4 +26,5 @@ def insertion_sort(arr: list) -> list:
 
 
 if __name__ == '__main__':
-    print(insertion_sort([randint(1, 100) for _ in range(10)]))
+    arr = [randint(1, 100) for _ in range(100)]
+    assert insertion_sort(arr) == sorted(arr)
