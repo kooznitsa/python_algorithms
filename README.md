@@ -65,13 +65,14 @@ f + g = O(max(f, g))
 
 ## Greedy Algorithms
 
-At each step, you pick the locally optimal solution, and in the end you’re lef with the globally optimal solution.
+At each step, you pick the locally optimal solution, and in the end you’re left with the globally optimal solution.
 
 **Examples:**
 
 - [Dijkstra's algorithm](https://github.com/kooznitsa/python_algorithms/blob/main/searching/dijkstra.py)
 - [Huffman code](https://github.com/kooznitsa/python_algorithms/blob/main/greedy/huffman.py)
 - [Knapsack problem](https://github.com/kooznitsa/python_algorithms/blob/main/greedy/knapsack.py)
+- [Traveling Salesman Problem](https://github.com/kooznitsa/python_algorithms/blob/main/greedy/tsp.py)
 
 ## Dynamic Programming
 
