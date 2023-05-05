@@ -10,23 +10,27 @@
 
 **Big O run times, from fastest to slowest:**
 
-| Big O         | Name               | Example                                       |
+| Big O         | Name               | Examples                                      |
 | ------------- | ------------------ | --------------------------------------------- |
 | O(1)          | Constant           | Determining if a binary number is even or odd |
 | O(log log n)  | Double logarithmic | Interpolation search                          |
-| O(log n)      | Log                | Binary search                                 |
-| O(n)          | Linear             | Simple search                                 |
+| O(log n)      | Log(arithmic)      | Binary search                                 |
+| O(n)          | Linear             | Linear search, iterating over a list          |
 | O(n \* log n) | Loglinear          | Quicksort, heapsort, mergesort                |
 | O(n \*\* 2)   | Quadratic          | Selection sort, bubble sort, insertion sort   |
-| O(2 \*\* n)   | Exponential        | Brute-force equivalence of 2 statements       |
+| O(n \*\* 3)   | Cubic              | Floyd and Warshall’s algorithms               |
+| O(n \*\* k)   | Polynomial         | k nested for loops over n, k > 0              |
+| O(k \*\* n)   | Exponential        | Producing every subset of n items             |
 | O(n!)         | Factorial          | Traveling salesperson via brute-force search  |
 
 **Examples of operations:**
+
 - O(1): accessing a dictionary by key; push/pop from a stack.
 - O(log n): volume of data decreases with each iteration.
 - O(n): searching for an element in an array; finding a minimum element in an array.
-- O(n ** 2): 2 nested foor loops.
-- O(n ** 3): 3 nested foor loops.
+- O(n \*\* 2): 2 nested foor loops.
+- O(n \*\* 3): 3 nested foor loops.
+- O(n!): producing every ordering of n values.
 
 ![array_sorting.png](https://raw.githubusercontent.com/kooznitsa/python_algorithms/main/images/array_sorting.png)
 
@@ -46,6 +50,34 @@ You take only the fastest-growing term and ignore constants and terms that grow 
 f + g = O(max(f, g))
 (n ** 2) + n = O(n ** 2)
 (2 ** n) + (n ** 9) = O(2 \*\* n)
+
+## Recurrences
+
+The recurrence describes the running time of an algorithm that divides a problem of size n into subproblems which are solved recursively.
+
+A recurrence relation is an equation that relates a function to itself, in a recursive way (such as T(n) = T(n/2) + 1). These equations are often used to describe the running times of recursive algorithms.
+
+Some important recurrences (one or two recursive calls on problems of size n – 1 or n / 2, with either constant or linear additional work in each call).
+
+| Recurrence         | Solution     | Example                                         |
+| ------------------ | ------------ | ----------------------------------------------- |
+| T(n) = T(n–1) + 1  | Θ(n)         | Processing a sequence, for example, with reduce |
+| T(n) = T(n–1) + n  | Θ(n \*\* 2)  | Handshake problem                               |
+| T(n) = 2T(n–1) + 1 | Θ(2 \*\* n)  | Towers of Hanoi                                 |
+| T(n) = 2T(n–1) + n | Θ(2 \*\* n)  |                                                 |
+| T(n) = T(n/2) + 1  | Θ(lg n)      | Binary search                                   |
+| T(n) = T(n/2) + n  | Θ(n)         | Randomized Select, average case                 |
+| T(n) = 2T(n/2) + 1 | Θ(n)         | Tree traversal                                  |
+| T(n) = 2T(n/2) + n | Θ(n \* lg n) | Sorting by divide and conquer                   |
+
+Three main ways of solving recurrences:
+
+1. Repeatedly apply the original equation to unravel the recursive occurrences of T until you find a pattern.
+2. Guess a solution, and try to prove that it’s correct using induction.
+3. For divide and conquer recurrences that fit one of the cases of the master theorem, simply use the corresponding solution.
+
+Example of perfectly balanced binary tree:
+![binary_tree.png](https://raw.githubusercontent.com/kooznitsa/python_algorithms/main/images/binary_tree.png)
 
 ## Divide and Conquer (D&C) Algorithms
 

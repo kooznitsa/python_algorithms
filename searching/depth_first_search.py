@@ -7,8 +7,14 @@ Time complexity: O(V + E)
 (V for number of vertices (= nodes), E for number of edges)
 """
 
+from typing import Any
 
-def depth_first(graph: dict, start: str, visited: set = None) -> set:
+
+def depth_first(
+        graph: dict[Any, set], 
+        start: str, 
+        visited: set = None
+    ) -> set:
     if visited is None:
         visited = set()
     visited.add(start)

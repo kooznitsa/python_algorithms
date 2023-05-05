@@ -38,16 +38,39 @@ def merge(left: list, right: list) -> list:
     return result
 
 
-def recursive_merge_sort(nums: list) -> list:
+def recursive_merge_sort_0(nums: list) -> list:
     """Perform recursive merge sort algorithm."""
     if len(nums) == 1:
         return nums
     
     mid = (len(nums) - 1) // 2
-    left = recursive_merge_sort(nums[:mid + 1])
-    right = recursive_merge_sort(nums[mid + 1:])
+    left = recursive_merge_sort_0(nums[:mid + 1])
+    right = recursive_merge_sort_0(nums[mid + 1:])
 
     return merge(left, right)
+
+
+def recursive_merge_sort_1(nums: list) -> deque:
+    """Perform recursive merge sort algorithm
+    without merge function.
+    """
+    mid = len(nums) // 2
+    left, right = nums[:mid], nums[mid:]
+
+    if len(left) > 1:
+        left = recursive_merge_sort_1(left)
+    if len(right) > 1:
+        right = recursive_merge_sort_1(right)
+
+    res = deque()
+
+    while left and right:
+        if left[-1] >= right[-1]:
+            res.appendleft(left.pop())
+        else:
+            res.appendleft(right.pop())
+
+    return deque(left or right) + res
 
 
 def iterative_merge_sort(nums: list) -> list:
@@ -62,4 +85,10 @@ def iterative_merge_sort(nums: list) -> list:
 
 if __name__ == '__main__':
     nums = [randint(1, 999) for _ in range(10)]
-    assert recursive_merge_sort(nums) == iterative_merge_sort(nums) == sorted(nums)
+
+    assert (
+        recursive_merge_sort_0(nums) 
+        == list(recursive_merge_sort_1(nums)) 
+        == iterative_merge_sort(nums) 
+        == sorted(nums)
+    )
