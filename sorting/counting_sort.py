@@ -12,8 +12,20 @@ This array is used for storing the count of the elements in the array.
 Time complexity: O(n + M), where M is the maximum number
 """
 
+from collections import defaultdict
 
-def counting_sort(arr: list) -> None:
+
+def countint_sort_0(arr: list, key: int = lambda x: x) -> list:
+    res = []
+    counts = defaultdict(list)
+    for x in arr:
+        counts[key(x)].append(x)
+    for k in range(min(counts), max(counts) + 1):
+        res.extend(counts[k])
+    return res
+
+
+def counting_sort_1(arr: list) -> None:
     size = len(arr)
     maximum = max(arr) + 1
     output = [0] * size
@@ -44,5 +56,6 @@ def counting_sort(arr: list) -> None:
 
 if __name__ == '__main__':
     arr = [3, 3, 2, 1, 2, 3, 3, 2, 2, 1, 1, 2]
-    counting_sort(arr)
+    assert countint_sort_0(arr) == sorted(arr)
+    counting_sort_1(arr)
     print(arr)
