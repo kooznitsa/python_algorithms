@@ -124,3 +124,17 @@ At each step, you pick the locally optimal solution, and in the end you’re lef
 - [Edit distance](https://github.com/kooznitsa/python_algorithms/blob/main/dynamic/edit_distance.py)
 - [Knapsack problem](https://github.com/kooznitsa/python_algorithms/blob/main/dynamic/knapsack.py)
 - [Largest Increasing Sequence (LIS)](https://github.com/kooznitsa/python_algorithms/blob/main/dynamic/lis.py)
+
+## Graphs
+
+- **Traversal:** Discovering, and later visiting, all the nodes in a graph.
+  - Serializing some complex data structure and need to make sure you examine all its constituent objects.
+  - Listing all files and directories in a part of the file system.
+  - Manage dependencies between software packages.
+- **Pruning:** Sometimes you’re looking for a specific node (or a kind of node), and you’d like to ignore as much of the graph as you can. This kind of search is called goal-directed, and the act of ignoring potential subtrees of the traversal is called pruning. For example, if you knew that the node you were looking for was within k steps of the starting node, running a traversal with a depth limit of k would be a form of pruning.
+
+**Examples:**
+
+- [Breadth-first search](https://github.com/kooznitsa/python_algorithms/blob/main/searching/breadth_first_search.py)
+- [Depth-first search](https://github.com/kooznitsa/python_algorithms/blob/main/searching/depth_first_search.py)
+- [Topological sorting](https://github.com/kooznitsa/python_algorithms/blob/main/sorting/topsort.py)

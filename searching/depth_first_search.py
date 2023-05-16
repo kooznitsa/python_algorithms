@@ -7,7 +7,7 @@ Time complexity: O(V + E)
 (V for number of vertices (= nodes), E for number of edges)
 """
 
-from typing import Any
+from typing import Any, Generator
 
 
 def depth_first(
@@ -15,6 +15,7 @@ def depth_first(
         start: str, 
         visited: set = None
     ) -> set:
+    """Recursive depth-first search."""
     if visited is None:
         visited = set()
     visited.add(start)
@@ -24,13 +25,29 @@ def depth_first(
     return visited
 
 
-graph = {
-    'Julia': {'Mark', 'Alex', 'Olga'},
-    'Alex': {'Julia', 'Mariam'},
-    'Mariam': {'Olga', 'Julia', 'Mark'},
-    'Olga': {'Alex'},
-    'Mark': {'Olga'},
-}
+def iter_dfs(graph: dict[Any, set], start: str) -> Generator:
+    """Iterative depth-first search."""
+    visited = set()               # Visited-set
+    Q = []                        # Queue
+    Q.append(start)               # We plan on visiting start
+    while Q:                      # Planned nodes left?
+        nxt = Q.pop()             # Get one
+        if nxt in visited:
+            continue              # Already visited? Skip it
+        visited.add(nxt)          # We've visited it now
+        Q.extend(graph[nxt])      # Schedule all neighbors
+        yield nxt                 # Report nxt as visited
+
 
 if __name__ == '__main__':
-    assert depth_first(graph, 'Julia') == {'Julia', 'Mark', 'Mariam', 'Olga', 'Alex'}
+    graph = {
+        'Julia': {'Mark', 'Alex', 'Olga'},
+        'Alex': {'Julia', 'Mariam'},
+        'Mariam': {'Olga', 'Julia', 'Mark'},
+        'Olga': {'Alex'},
+        'Mark': {'Olga'},
+    }
+    start = 'Julia'
+    result = {'Julia', 'Mark', 'Mariam', 'Olga', 'Alex'}
+    
+    assert depth_first(graph, start) == set(iter_dfs(graph, start)) == result

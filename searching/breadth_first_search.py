@@ -16,7 +16,7 @@ Time complexity: O(V + E)
 (V for number of vertices (= nodes), E for number of edges)
 """
 
-
+from typing import Generator, Optional
 from collections import deque
 
 
@@ -35,6 +35,52 @@ def breadth_first(graph: dict, name: str, condition: bool) -> bool:
     return False
 
 
+def bfs(graph: dict, start: str) -> dict:
+    parents = {start: None}              # Parents
+    Q = deque([start])                   # FIFO queue
+    while Q:
+        node = Q.popleft()               # Constant-time for deque
+        for nxt in graph[node]:
+            if nxt in parents:
+                continue                 # Already has parent
+            parents[nxt] = node          # Reached from node: node is parent
+            Q.append(nxt)
+    return parents
+
+
+def iddfs(graph: dict, start: str) -> Generator:
+    """Iterative Deepening Depth-First Search (IDDFS).
+    There is one situation where IDDFS would be preferable over BFS: 
+    when searching a huge tree.
+    """
+    yielded = set()                                         # Visited for the first time
+    def recurse(
+            graph: dict, 
+            start: str, 
+            depth: int, 
+            S: Optional[set] = None
+        ) -> Optional[Generator]:                           # Depth-limited DFS
+        if start not in yielded:
+            yield start
+            yielded.add(start)
+        if depth == 0:
+            return                                          # Max depth zero: Backtrack
+        if S is None:
+            S = set()
+        S.add(start)
+        for node in graph[start]:
+            if node in S:
+                continue
+            for nxt in recurse(graph, node, depth - 1, S):  # Recurse with depth - 1
+                yield nxt
+    n = len(graph)
+    for depth in range(n):                                  # Try all depths 0...nxt - 1
+        if len(yielded) == n:
+            break                                           # All nodes seen?
+        for node in recurse(graph, start, depth):
+            yield node
+
+
 def main():
     """Find a friend with a name ending in -m"""
     graph = {
@@ -47,6 +93,7 @@ def main():
     name = 'Alex'
     condition = lambda x: x.endswith('m')
     print(breadth_first(graph, name, condition))
+
 
 if __name__ == '__main__':
     main()
