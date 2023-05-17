@@ -2,7 +2,7 @@
 -----
 1. Create a leaf node for each symbol and add it to the priority queue.
 2. While there is more than one node in the queue:
-    1) Remove the two nodes of highest priority (lowest probability) from the queue
+    1) Remove the two nodes of highest priority (lowest probability) from the queue.
     2) Create a new internal node with these two nodes as children and with 
     probability equal to the sum of the two nodes' probabilities.
     3) Add the new node to the queue.
@@ -11,6 +11,29 @@
 Time complexity: O(n ** 2) with an array,
 O(n * log n) with a heap
 """
+
+from heapq import heapify, heappush, heappop
+from itertools import count
+
+
+def huffman(seq: str | list, frq: list[int]) -> list:
+    """Huffman's algorithm."""
+    num = count()
+    trees = list(zip(frq, num, seq))         # num ensures valid ordering
+    heapify(trees)                           # A min-heap based on freq
+    while len(trees) > 1:                    # Until all are combined
+        fa, _, a = heappop(trees)            # Get the two smallest trees
+        fb, _, b = heappop(trees)
+        n = next(num)
+        heappush(trees, (fa + fb, n, [a, b])) # Combine and re-add them
+    return trees[0][-1]
+
+
+if __name__ == '__main__':
+    seq = 'abcdefghi'
+    frq = [4, 5, 6, 9, 11, 12, 15, 16, 20]
+    assert huffman(seq, frq) == [['i', [['a', 'b'], 'e']], [['f', 'g'], [['c', 'd'], 'h']]]
+
 
 import heapq
 import random
