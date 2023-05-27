@@ -138,3 +138,46 @@ At each step, you pick the locally optimal solution, and in the end you’re lef
 - [Breadth-first search](https://github.com/kooznitsa/python_algorithms/blob/main/searching/breadth_first_search.py)
 - [Depth-first search](https://github.com/kooznitsa/python_algorithms/blob/main/searching/depth_first_search.py)
 - [Topological sorting](https://github.com/kooznitsa/python_algorithms/blob/main/sorting/topsort.py)
+
+### Nested Sets (вложенные множества)
+
+Это способ организации иерархических данных, где каждый узел дерева представлен парой чисел, определяющих диапазон значений.
+
+Каждая категория представлена объектом, содержащим поля "ID", "Название", "Левая граница" и "Правая граница". "Левая граница" и "Правая граница" определяют диапазон значений, которые охватывают поддерево данной категории.
+
+Преимущество использования Nested Sets в том, что мы можем эффективно извлекать всех потомков узла, находить родителей и определять уровень вложенности с помощью простых операций сравнения. 
+В этом примере мы находим всех потомков категории "Компьютеры".
+
+При изменении структуры дерева требуется обновление левых и правых границ всех связанных категорий.
+
+```
+class Category:
+    def __init__(self, id, name, left, right):
+        self.id = id
+        self.name = name
+        self.left = left
+        self.right = right
+
+category1 = Category(1, 'Computers', 1, 14)
+category2 = Category(2, 'Laptops', 2, 7)
+category3 = Category(3, 'Smartphones', 3, 4)
+category4 = Category(4, 'Game laptops', 5, 6)
+category5 = Category(5, 'PC', 8, 13)
+
+def get_descendats(category, categories):
+    """Retrieves names of all descendants."""
+    descendants = []
+    for cat in categories:
+        if cat.left > category.left and cat.right < category.right:
+            descendants.append(cat)
+    return descendants
+
+descendants = get_descendats(category1, [category1, category2, category3, category4, category5])
+
+for descendant in descendants:
+    print(descendant.name)
+    # Laptops
+    # Smartphones
+    # Game laptops
+    # PC
+```
